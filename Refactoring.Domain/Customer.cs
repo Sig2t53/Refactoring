@@ -38,8 +38,6 @@ namespace Refactoring.Domain
 
             foreach(Rental rental in _rentals)
             {
-                double thisAmount = 0;
-                thisAmount = rental.getCharge();
                 //レンタルポイントを加算
                 frequentRenterPoints++;
 
@@ -48,8 +46,8 @@ namespace Refactoring.Domain
                 {
                     frequentRenterPoints++;
                 }
-                result += "\t" + rental.Movie.Title + "\t" + thisAmount.ToString() + "\n";
-                totalAmount += thisAmount;
+                result += "\t" + rental.Movie.Title + "\t" + rental.GetCharge().ToString() + "\n";
+                totalAmount += rental.GetCharge();
             }
             //フッタの追加
             result += "Amount owed is " + totalAmount.ToString() + "\n";
