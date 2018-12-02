@@ -5,7 +5,7 @@ using Refactoring.Domain;
 namespace RefactoringTest
 {
     [TestClass]
-    public class UnitTest1
+    public class CustomerTest
     {
         [TestMethod]
         public void 新作テスト()
