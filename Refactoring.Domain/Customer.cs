@@ -39,26 +39,7 @@ namespace Refactoring.Domain
             foreach(Rental rental in _rentals)
             {
                 double thisAmount = 0;
-                switch(rental.Movie.PriceCode)
-                {
-                    case Movie.REGULAR:
-                        thisAmount += 2;
-                        if(rental.DayRented > 2)
-                        {
-                            thisAmount += (rental.DayRented - 2) * 1.5;
-                        }
-                        break;
-                    case Movie.NEW_RELEASE:
-                        thisAmount += rental.DayRented * 3;
-                        break;
-                    case Movie.CHILDRENS:
-                        thisAmount += 1.5;
-                        if (rental.DayRented > 3)
-                        {
-                            thisAmount += (rental.DayRented - 3) * 1.5;
-                        }
-                        break;
-                }
+                thisAmount = amountFor(rental);
                 //レンタルポイントを加算
                 frequentRenterPoints++;
 
@@ -75,6 +56,32 @@ namespace Refactoring.Domain
             result += "You earned " + frequentRenterPoints.ToString() + "frequent Renter Points";
 
             return result;
+        }
+
+        private double amountFor(Rental rental)
+        {
+            double thisAmount = 0;
+            switch (rental.Movie.PriceCode)
+            {
+                case Movie.REGULAR:
+                    thisAmount += 2;
+                    if (rental.DayRented > 2)
+                    {
+                        thisAmount += (rental.DayRented - 2) * 1.5;
+                    }
+                    break;
+                case Movie.NEW_RELEASE:
+                    thisAmount += rental.DayRented * 3;
+                    break;
+                case Movie.CHILDRENS:
+                    thisAmount += 1.5;
+                    if (rental.DayRented > 3)
+                    {
+                        thisAmount += (rental.DayRented - 3) * 1.5;
+                    }
+                    break;
+            }
+            return thisAmount;
         }
     }
 }
