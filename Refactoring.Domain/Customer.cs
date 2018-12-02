@@ -60,28 +60,28 @@ namespace Refactoring.Domain
 
         private double amountFor(Rental rental)
         {
-            double thisAmount = 0;
+            double result = 0;
             switch (rental.Movie.PriceCode)
             {
                 case Movie.REGULAR:
-                    thisAmount += 2;
+                    result += 2;
                     if (rental.DayRented > 2)
                     {
-                        thisAmount += (rental.DayRented - 2) * 1.5;
+                        result += (rental.DayRented - 2) * 1.5;
                     }
                     break;
                 case Movie.NEW_RELEASE:
-                    thisAmount += rental.DayRented * 3;
+                    result += rental.DayRented * 3;
                     break;
                 case Movie.CHILDRENS:
-                    thisAmount += 1.5;
+                    result += 1.5;
                     if (rental.DayRented > 3)
                     {
-                        thisAmount += (rental.DayRented - 3) * 1.5;
+                        result += (rental.DayRented - 3) * 1.5;
                     }
                     break;
             }
-            return thisAmount;
+            return result;
         }
     }
 }
