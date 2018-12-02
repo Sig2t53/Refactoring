@@ -39,7 +39,7 @@ namespace Refactoring.Domain
             foreach(Rental rental in _rentals)
             {
                 double thisAmount = 0;
-                thisAmount = rental.amountFor();
+                thisAmount = rental.getCharge();
                 //レンタルポイントを加算
                 frequentRenterPoints++;
 
