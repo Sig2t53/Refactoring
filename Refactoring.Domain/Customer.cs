@@ -57,10 +57,5 @@ namespace Refactoring.Domain
 
             return result;
         }
-
-        private double amountFor(Rental rental)
-        {
-            return rental.amountFor();
-        }
     }
 }
