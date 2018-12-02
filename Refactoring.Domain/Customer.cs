@@ -57,31 +57,9 @@ namespace Refactoring.Domain
 
             return result;
         }
-
         private double amountFor(Rental rental)
         {
-            double result = 0;
-            switch (rental.Movie.PriceCode)
-            {
-                case Movie.REGULAR:
-                    result += 2;
-                    if (rental.DayRented > 2)
-                    {
-                        result += (rental.DayRented - 2) * 1.5;
-                    }
-                    break;
-                case Movie.NEW_RELEASE:
-                    result += rental.DayRented * 3;
-                    break;
-                case Movie.CHILDRENS:
-                    result += 1.5;
-                    if (rental.DayRented > 3)
-                    {
-                        result += (rental.DayRented - 3) * 1.5;
-                    }
-                    break;
-            }
-            return result;
+            return rental.amountFor(rental);
         }
     }
 }

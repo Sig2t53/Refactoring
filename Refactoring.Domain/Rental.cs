@@ -32,5 +32,31 @@ namespace Refactoring.Domain
                 return _dayRented;
             }
         }
+
+        public double amountFor(Rental rental)
+        {
+            double result = 0;
+            switch (Movie.PriceCode)
+            {
+                case Movie.REGULAR:
+                    result += 2;
+                    if (DayRented > 2)
+                    {
+                        result += (DayRented - 2) * 1.5;
+                    }
+                    break;
+                case Movie.NEW_RELEASE:
+                    result += DayRented * 3;
+                    break;
+                case Movie.CHILDRENS:
+                    result += 1.5;
+                    if (DayRented > 3)
+                    {
+                        result += (DayRented - 3) * 1.5;
+                    }
+                    break;
+            }
+            return result;
+        }
     }
 }
