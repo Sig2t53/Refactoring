@@ -39,7 +39,7 @@ namespace Refactoring.Domain
             foreach(Rental rental in _rentals)
             {
                 double thisAmount = 0;
-                thisAmount = amountFor(rental);
+                thisAmount = rental.amountFor();
                 //レンタルポイントを加算
                 frequentRenterPoints++;
 
@@ -57,9 +57,10 @@ namespace Refactoring.Domain
 
             return result;
         }
+
         private double amountFor(Rental rental)
         {
-            return rental.amountFor(rental);
+            return rental.amountFor();
         }
     }
 }

@@ -33,7 +33,7 @@ namespace Refactoring.Domain
             }
         }
 
-        public double amountFor(Rental rental)
+        public double amountFor()
         {
             double result = 0;
             switch (Movie.PriceCode)
