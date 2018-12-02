@@ -10,7 +10,7 @@ namespace Refactoring.Domain
     {
 
         private string _name;
-        private List<Rental> _rentals;
+        private List<Rental> _rentals=new List<Rental>();
          
         public Customer(string name)
         {
@@ -67,7 +67,8 @@ namespace Refactoring.Domain
                 {
                     frequentRenterPoints++;
                 }
-                result += "\t" + rental.Movie.Title + "\t" + thisAmount.ToString() + "\n";  
+                result += "\t" + rental.Movie.Title + "\t" + thisAmount.ToString() + "\n";
+                totalAmount += thisAmount;
             }
             //フッタの追加
             result += "Amount owed is " + totalAmount.ToString() + "\n";
