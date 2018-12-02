@@ -67,7 +67,7 @@ namespace Refactoring.Domain
                 {
                     frequentRenterPoints++;
                 }
-                result += "\t" + rental.Movie.Title + "\t" + frequentRenterPoints.ToString() + "frequent Renter Points";  
+                result += "\t" + rental.Movie.Title + "\t" + thisAmount.ToString() + "\n";  
             }
             //フッタの追加
             result += "Amount owed is " + totalAmount.ToString() + "\n";
