@@ -33,18 +33,9 @@ namespace Refactoring.Domain
             }
         }
 
-
-        public int GetFrequentRenterPoints()
+        public double GetCharge()
         {
-            //新作を２日以上かりた場合はボーナスポイント
-            if (Movie.PriceCode == Movie.NEW_RELEASE && DayRented > 1)
-            {
-                return 2;
-            }
-            else
-            {
-                return 1;
-            }
+            return _movie.GetCharge(_dayRented);
         }
     }
 }
