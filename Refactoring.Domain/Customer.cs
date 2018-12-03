@@ -38,7 +38,7 @@ namespace Refactoring.Domain
 
             foreach(Rental rental in _rentals)
             {
-                frequentRenterPoints += GetFrequentRenterPoints(rental);
+                frequentRenterPoints += rental.GetFrequentRenterPoints();
                 result += "\t" + rental.Movie.Title + "\t" + rental.GetCharge().ToString() + "\n";
                 totalAmount += rental.GetCharge();
             }
@@ -49,17 +49,6 @@ namespace Refactoring.Domain
             return result;
         }
 
-        int GetFrequentRenterPoints(Rental rental)
-        {
-            //新作を２日以上かりた場合はボーナスポイント
-            if (rental.Movie.PriceCode == Movie.NEW_RELEASE && rental.DayRented > 1)
-            {
-                return 2;
-            }
-            else
-            {
-                return 1;
-            }
-        }
+
     }
 }
