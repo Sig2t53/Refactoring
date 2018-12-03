@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Refactoring.Domain
+﻿namespace Refactoring.Domain
 {
     public class RegularPrice : Price
     {
-        public override int GetPriceCode()
+        public override int PriceCode
         {
-            return Movie.REGULAR;
+            get
+            {
+                return Movie.REGULAR;
+            }
         }
     }
 }

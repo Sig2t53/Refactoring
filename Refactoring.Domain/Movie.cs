@@ -26,7 +26,7 @@ namespace Refactoring.Domain
         {
             get
             {
-                return _price.GetPriceCode();
+                return _price.PriceCode;
             }
             set
             {

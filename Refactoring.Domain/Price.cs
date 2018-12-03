@@ -1,19 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Refactoring.Domain
+﻿namespace Refactoring.Domain
 {
     public abstract class Price
     {
-        public abstract int GetPriceCode();
+        public virtual int PriceCode { get; set; }
 
         public double GetCharge(int dayRented)
         {
             double result = 0;
-            switch (GetPriceCode())
+            switch (PriceCode)
             {
                 case Movie.REGULAR:
                     result += 2;
