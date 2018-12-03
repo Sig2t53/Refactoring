@@ -47,6 +47,19 @@ namespace Refactoring.Domain
             return result;
         }
 
+        public string HtmlStatement()
+        {
+            string result = "<H1>Rentals for<EM>" + Name + "</EM></H1><P>\n";
+            foreach(Rental rental in _rentals)
+            {
+                result += rental.Movie.Title + ":" + rental.GetCharge().ToString() + "<BR>\n";
+            }
+            // フッタ部分の追加
+            result += "<P>You owe <EM>is " + GetTotalCharge().ToString() + "</EM><P>\n";
+            result += "On this rental you earned <EM>" + GetTotalFrequentRenterPoints().ToString() + "</EM>frequent Renter Points<P>";
+            return result;
+        }
+
         private double GetTotalCharge()
         {
             double result = 0;
