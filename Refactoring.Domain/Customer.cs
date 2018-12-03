@@ -41,19 +41,31 @@ namespace Refactoring.Domain
                 result += "\t" + rental.Movie.Title + "\t" + rental.GetCharge().ToString() + "\n";
             }
             //フッタの追加
-            result += "Amount owed is " + getTotalCharge() + "\n";
-            result += "You earned " + frequentRenterPoints.ToString() + "frequent Renter Points";
+            result += "Amount owed is " + GetTotalCharge().ToString() + "\n";
+            result += "You earned " + GetTotalFrequentRenterPoints().ToString() + "frequent Renter Points";
 
             return result;
         }
 
-        private double getTotalCharge()
+        private double GetTotalCharge()
         {
             double result = 0;
 
             foreach (Rental rental in _rentals)
             {
                 result += rental.GetCharge();    
+            }
+
+            return result;
+        }
+
+        private double GetTotalFrequentRenterPoints()
+        {
+            int result = 0;
+
+            foreach (Rental rental in _rentals)
+            {
+                result += rental.GetFrequentRenterPoints();
             }
 
             return result;
