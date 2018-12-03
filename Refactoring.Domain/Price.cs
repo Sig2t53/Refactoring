@@ -13,19 +13,19 @@ namespace Refactoring.Domain
         public double GetCharge(int dayRented)
         {
             double result = 0;
-            switch (PriceCode)
+            switch (GetPriceCode())
             {
-                case REGULAR:
+                case Movie.REGULAR:
                     result += 2;
                     if (dayRented > 2)
                     {
                         result += (dayRented - 2) * 1.5;
                     }
                     break;
-                case NEW_RELEASE:
+                case Movie.NEW_RELEASE:
                     result += dayRented * 3;
                     break;
-                case CHILDRENS:
+                case Movie.CHILDRENS:
                     result += 1.5;
                     if (dayRented > 3)
                     {

@@ -13,7 +13,6 @@ namespace Refactoring.Domain
         public const int NEW_RELEASE = 1;
 
         private string _title;
-        private int _priceCode;
         private Price _price;
 
         public string Title
@@ -65,6 +64,11 @@ namespace Refactoring.Domain
             {
                 return 1;
             }
+        }
+
+        public double GetCharge(int dayRented)
+        {
+            return _price.GetCharge(dayRented);
         }
 
     }
