@@ -36,26 +36,26 @@ namespace Refactoring.Domain
             _priceCode = priceCode;
         }
 
-        public double GetCharge()
+        public double GetCharge(int dayRented)
         {
             double result = 0;
-            switch (Movie.PriceCode)
+            switch (PriceCode)
             {
-                case Movie.REGULAR:
+                case REGULAR:
                     result += 2;
-                    if (DayRented > 2)
+                    if (dayRented > 2)
                     {
-                        result += (DayRented - 2) * 1.5;
+                        result += (dayRented - 2) * 1.5;
                     }
                     break;
-                case Movie.NEW_RELEASE:
-                    result += DayRented * 3;
+                case NEW_RELEASE:
+                    result += dayRented * 3;
                     break;
-                case Movie.CHILDRENS:
+                case CHILDRENS:
                     result += 1.5;
-                    if (DayRented > 3)
+                    if (dayRented > 3)
                     {
-                        result += (DayRented - 3) * 1.5;
+                        result += (dayRented - 3) * 1.5;
                     }
                     break;
             }
