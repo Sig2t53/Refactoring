@@ -10,5 +10,10 @@
             }
 
         }
+
+        public override double GetCharge(int dayRented)
+        {
+            return dayRented * 3;
+        }
     }
 }

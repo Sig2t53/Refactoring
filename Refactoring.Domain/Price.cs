@@ -4,7 +4,7 @@
     {
         public virtual int PriceCode { get; set; }
 
-        public double GetCharge(int dayRented)
+        public virtual double GetCharge(int dayRented)
         {
             double result = 0;
             switch (PriceCode)
