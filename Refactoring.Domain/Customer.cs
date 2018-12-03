@@ -51,16 +51,15 @@ namespace Refactoring.Domain
 
         int GetFrequentRenterPoints(Rental rental)
         {
-            int frequentRenterPoints = 0;
-            //レンタルポイントを加算
-            frequentRenterPoints++;
-
             //新作を２日以上かりた場合はボーナスポイント
             if (rental.Movie.PriceCode == Movie.NEW_RELEASE && rental.DayRented > 1)
             {
-                frequentRenterPoints++;
+                return 2;
             }
-            return frequentRenterPoints;
+            else
+            {
+                return 1;
+            }
         }
     }
 }
