@@ -4,30 +4,19 @@
     {
         public virtual int PriceCode { get; set; }
 
-        public virtual double GetCharge(int dayRented)
+        public abstract double GetCharge(int dayRented);
+
+        public int GetFrequentRenterPoints(int dayRented)
         {
-            double result = 0;
-            switch (PriceCode)
+            //新作を２日以上かりた場合はボーナスポイント
+            if (PriceCode == Movie.NEW_RELEASE && dayRented > 1)
             {
-                case Movie.REGULAR:
-                    result += 2;
-                    if (dayRented > 2)
-                    {
-                        result += (dayRented - 2) * 1.5;
-                    }
-                    break;
-                case Movie.NEW_RELEASE:
-                    result += dayRented * 3;
-                    break;
-                case Movie.CHILDRENS:
-                    result += 1.5;
-                    if (dayRented > 3)
-                    {
-                        result += (dayRented - 3) * 1.5;
-                    }
-                    break;
+                return 2;
             }
-            return result;
+            else
+            {
+                return 1;
+            }
         }
     }
 }
