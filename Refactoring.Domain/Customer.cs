@@ -32,7 +32,6 @@ namespace Refactoring.Domain
 
         public string Statement()
         {
-            double totalAmount = 0;
             int frequentRenterPoints = 0;
             string result = "Rental Record for " + Name + "\n"; 
 
@@ -40,15 +39,25 @@ namespace Refactoring.Domain
             {
                 frequentRenterPoints += rental.GetFrequentRenterPoints();
                 result += "\t" + rental.Movie.Title + "\t" + rental.GetCharge().ToString() + "\n";
-                totalAmount += rental.GetCharge();
             }
             //フッタの追加
-            result += "Amount owed is " + totalAmount.ToString() + "\n";
+            result += "Amount owed is " + getTotalCharge() + "\n";
             result += "You earned " + frequentRenterPoints.ToString() + "frequent Renter Points";
 
             return result;
         }
 
+        private double getTotalCharge()
+        {
+            double result = 0;
+
+            foreach (Rental rental in _rentals)
+            {
+                result += rental.GetCharge();    
+            }
+
+            return result;
+        }
 
     }
 }
