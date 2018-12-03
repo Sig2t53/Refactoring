@@ -33,6 +33,11 @@ namespace Refactoring.Domain
             }
         }
 
+        public int GetFrequentRenterPoints()
+        {
+            return _movie.GetFrequentRenterPoints(_dayRented);
+        }
+
         public double GetCharge()
         {
             return _movie.GetCharge(_dayRented);
