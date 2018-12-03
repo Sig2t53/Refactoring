@@ -15,5 +15,11 @@
         {
             return dayRented * 3;
         }
+
+        public override int GetFrequentRenterPoints(int dayRented)
+        {
+            //新作を２日以上かりた場合はボーナスポイント
+            return dayRented > 1 ? 2 : 1;
+        }
     }
 }
