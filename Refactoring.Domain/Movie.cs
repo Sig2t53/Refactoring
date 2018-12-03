@@ -14,6 +14,7 @@ namespace Refactoring.Domain
 
         private string _title;
         private int _priceCode;
+        private Price _price;
 
         public string Title
         {
@@ -26,11 +27,24 @@ namespace Refactoring.Domain
         {
             get
             {
-                return _priceCode;
+                return _price.GetPriceCode();
             }
             set
             {
-                _priceCode = value;
+                switch(value)
+                {
+                    case REGULAR:
+                        _price = new RegularPrice();
+                        break;
+                    case CHILDRENS:
+                        _price = new ChildrenPrice();
+                        break;
+                    case NEW_RELEASE:
+                        _price = new NewReleasePrice();
+                        break;
+                    default:
+                        throw new ArgumentException("不正な料金コード");
+                }
             }
         }
 
