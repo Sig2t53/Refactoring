@@ -28,12 +28,16 @@ namespace Refactoring.Domain
             {
                 return _priceCode;
             }
+            set
+            {
+                _priceCode = value;
+            }
         }
 
         public Movie(string title,int priceCode)
         {
             _title = title;
-            _priceCode = priceCode;
+            PriceCode = priceCode;
         }
 
         public double GetCharge(int dayRented)
